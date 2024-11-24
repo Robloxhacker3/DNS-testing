@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dns>
+    <!-- DNS Configuration -->
+    <entries>
+        <!-- Anti Revoke Trigger -->
+        <entry>
+            <name>anti-revoke</name>
+            <description>Blocks Apple servers for app revocation and enables unsigned apps</description>
+            <actions>
+                <!-- Block Revocation and Apple Domains -->
+                <block>
+                    <!-- Apple Revocation Servers -->
+                    <domain>gs.apple.com</domain>
+                    <domain>appstore.com</domain>
+                    <domain>itunes.apple.com</domain>
+                    <domain>bag.itunes.apple.com</domain>
+                    <domain>appldnld.apple.com</domain>
+                    <domain>updates-http.cdn-apple.com</domain>
+                    <domain>swscan.apple.com</domain>
+                    <domain>configuration.apple.com</domain>
+                    <domain>captive.apple.com</domain>
+                    <domain>feedback.apple.com</domain>
+                    <domain>developer.apple.com</domain>
+                    <domain>idmsa.apple.com</domain>
+                    <domain>api.apple-cloudkit.com</domain>
+                    <domain>mzstatic.com</domain>
+                    <domain>albert.apple.com</domain>
+                </block>
+                <!-- Block Apple's IP Range -->
+                <block>
+                    <ip>17.0.0.0/8</ip>
+                </block>
+
+                <!-- Allow Unsigned Apps -->
+                <allow>
+                    <!-- Disable Code Signing -->
+                    <property>
+                        <name>amfi.allow_unsigned_code</name>
+                        <value>true</value>
+                    </property>
+                    <!-- Disable Library Validation -->
+                    <property>
+                        <name>com.apple.security.cs.disable_library_validation</name>
+                        <value>true</value>
+                    </property>
+                    <!-- Allow Untrusted Certificates -->
+                    <property>
+                        <name>com.apple.security.allow_untrusted_certs</name>
+                        <value>true</value>
+                    </property>
+                    <!-- Allow Dynamic Library Injection -->
+                    <property>
+                        <name>com.apple.security.allow_dyld_environment_variables</name>
+                        <value>true</value>
+                    </property>
+                    <!-- Disable Code Signing Enforcement -->
+                    <property>
+                        <name>security.codesigning.enforcement</name>
+                        <value>false</value>
+                    </property>
+                </allow>
+            </actions>
+        </entry>
+    </entries>
+</dns>
